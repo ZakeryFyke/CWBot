@@ -121,11 +121,10 @@ def sleep_with_countdown(length):
 
 def main():
 
-    print("Getting text")
-    text = get_bottom_message_text()
-
     #deadmau5
     while(1<2):
+        print("Getting text")
+        text = get_bottom_message_text()
         if(r"/go" in text.lower()):
             print("FORAY DETECTED, ATTEMPTING TO STOP")
             stop_foray()
