@@ -1,5 +1,4 @@
 import pyautogui
-import pywinauto
 import win32clipboard
 import time
 import random
@@ -23,7 +22,7 @@ def get_textbox_position():
     return 1424, 396
 
 def get_bottom_message_position():
-    return 1422, 357
+    return 1408, 364
 
 def get_copy_text_position():
     return 1466, 417
@@ -90,18 +89,25 @@ def stop_foray():
 
 def go_questing():
     rand = random.randint(1, 4)
+    print("Waiting " + str(rand) + " seconds to click quest.")
     time.sleep(rand)
+    print("Clicking quest.")
     failure = click_button(quest)
 
     while (failure == -1):
         time.sleep(5)
+        print("Clicking again.")
         failure = click_button(quest)
 
     rand = random.randint(2, 5)
+    print("Waiting " + str(rand) + " seconds to click quest type button.")
     time.sleep(rand)
+    print("Clicking quest type.")
     click_button(quest_type)
+
     while (failure == -1):
         time.sleep(5)
+        print("Clicking again.")
         failure = click_button(quest_type)
 
 def sleep_with_countdown(length):
@@ -124,7 +130,9 @@ def main():
     #deadmau5
     while(1<2):
         print("Getting text")
+        time.sleep(2)
         text = get_bottom_message_text()
+        print(text)
         if(r"/go" in text.lower()):
             print("FORAY DETECTED, ATTEMPTING TO STOP")
             stop_foray()
@@ -151,14 +159,18 @@ def main():
                     print("Stamina: " + str(stamina))
 
                     if(stamina > 0):
+                    #if(True):
                         print("Questing.")
                         go_questing()
                         # Wait for the forest to be over
-                        #time.sleep(480)
+                        # time.sleep(480)
+                    else:
+                        print("Not enough stamina.")
             else:
-                print("Not enough Stamina.")
+                print(".")
 
         rand = random.randint(600, 900)
+        #rand = random.randint(3, 10)
         print("Interactivity sleep of: " + str(rand) + " seconds.")
         sleep_with_countdown(rand)
 
@@ -181,8 +193,7 @@ copy = "copy.PNG"
 
 main()
 
-
-
+#print(pyautogui.position())
 
 
 
