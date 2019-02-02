@@ -22,12 +22,13 @@ def copy_bottom_message():
     failure = click_button(copy)
 
     if(failure == -1):
+        print("Failure")
         copy_bottom_message()
 
     # while (failure == -1):
     #     print("Failure")
     #     time.sleep(3)
-    #     failure = click_button(copy)
+     #     failure = click_button(copy)
 
     time.sleep(.25)
 
@@ -59,6 +60,10 @@ def stop_foray():
     pyautogui.typewrite("/go")
     hit_enter()
 
+    print("Waiting 5 minutes to defend")
+    time.sleep(300)
+    click_button(defend)
+
 # Click off the window so the bot doesn't see all messages read instantly
 def click_off_window():
     pyautogui.click(1355, 972)
@@ -70,6 +75,7 @@ me = "me.PNG"
 quest = "quests.PNG"
 textbox = "textbox.PNG"
 copy = "copy.PNG"
+defend = "defend.PNG"
 
 while(True):
 
@@ -80,7 +86,7 @@ while(True):
         print("FORAY DETECTED, ATTEMPTING TO STOP")
         stop_foray()
 
-    rand = random.randint(95, 200)
+    rand = random.randint(95, 120)
     print("Waiting " + str(rand) + " seconds")
     click_off_window()
     time.sleep(rand)
